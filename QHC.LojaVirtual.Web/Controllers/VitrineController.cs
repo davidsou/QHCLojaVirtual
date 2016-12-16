@@ -1,4 +1,5 @@
 ﻿using QHC.LojaVirtual.Dominio.Repositorio;
+using QHC.LojaVirtual.Dominio.Entidades;
 using QHC.LojaVirtual.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace QHC.LojaVirtual.Web.Controllers
             ProdutosViewModel model = new ProdutosViewModel
             {
                 Produtos = _repositorio.Produtos
-               .Where(p=> p.Categoria == null||p.Categoria ==categoria   )
+               .Where(p => categoria == null || p.Categoria.ToUpper().Trim() == categoria.ToUpper())
                .OrderBy(p => p.Descricao)
                .Skip((pagina - 1) * ProdutosPorPagina)
                .Take(ProdutosPorPagina),
