@@ -81,8 +81,13 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TesteCarrinhoCompras.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QHC.LojaVirtual.Dominio\QHC.LojaVirtual.Dominio.csproj">
+      <Project>{75940cd4-f618-423a-bb66-3cdbfcf89d51}</Project>
+      <Name>QHC.LojaVirtual.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QHC.LojaVirtual.Web\QHC.LojaVirtual.Web.csproj">
       <Project>{c62d2a51-3cec-4f8a-b8f9-0bf8c76a85eb}</Project>
       <Name>QHC.LojaVirtual.Web</Name>
