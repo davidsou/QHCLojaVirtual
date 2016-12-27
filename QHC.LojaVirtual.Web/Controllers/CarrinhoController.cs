@@ -1,5 +1,6 @@
 ﻿using QHC.LojaVirtual.Dominio.Entidades;
 using QHC.LojaVirtual.Dominio.Repositorio;
+using QHC.LojaVirtual.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +48,15 @@ namespace QHC.LojaVirtual.Web.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
+    
+        public ViewResult Index (string returnUrl)
+        {
+            CarrinhoViewModel carrinhoview = new CarrinhoViewModel();
+            carrinhoview.Carrinho = ObterCarrinho();
+            carrinhoview.ReturnUrl = returnUrl;
+            return View(carrinhoview);
+        
+        }
     }
+
 }
