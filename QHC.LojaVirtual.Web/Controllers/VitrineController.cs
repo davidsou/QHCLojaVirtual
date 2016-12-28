@@ -18,23 +18,20 @@ namespace QHC.LojaVirtual.Web.Controllers
         {
             _repositorio = new ProdutosRepositorio();
 
-            ProdutosViewModel model = new ProdutosViewModel
-            {
-                Produtos = _repositorio.Produtos
-               .Where(p => categoria == null || p.Categoria.ToUpper().Trim() == categoria.ToUpper())
+            ProdutosViewModel model = new ProdutosViewModel();
+            model.Produtos = _repositorio.Produtos
+                .Where(p => categoria == null || p.Categoria.ToUpper().Trim() == categoria.ToUpper())
                .OrderBy(p => p.Descricao)
                .Skip((pagina - 1) * ProdutosPorPagina)
-               .Take(ProdutosPorPagina),
+               .Take(ProdutosPorPagina);
 
-                Paginacao = new Paginacao
-                {
-                    PaginaAtual = pagina,
-                    ItensPorPagina = ProdutosPorPagina,
-                    ItensTotal = _repositorio.Produtos.Count()
-                },
-                CategoriaAtual = categoria
-            };
+            model.Paginacao = new Paginacao();
+            model.Paginacao.ItensPorPagina = ProdutosPorPagina;
+            model.Paginacao.PaginaAtual = pagina;
+            model.CategoriaAtual = categoria;
+            model.Paginacao.ItensTotal = categoria == null ? _repositorio.Produtos.Count() : _repositorio.Produtos.Count(e => e.Categoria.ToUpper().Trim() == categoria.ToUpper());
 
+           
           
 
 

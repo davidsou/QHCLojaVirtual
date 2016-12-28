@@ -57,6 +57,12 @@ namespace QHC.LojaVirtual.Web.Controllers
             return View(carrinhoview);
         
         }
+
+        public PartialViewResult Resumo()
+        {
+            Carrinho carrinho = ObterCarrinho();
+            return PartialView(carrinho);
+        }
     }
 
 }
