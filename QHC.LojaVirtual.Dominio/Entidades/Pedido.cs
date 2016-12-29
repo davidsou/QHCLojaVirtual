@@ -10,7 +10,7 @@ namespace QHC.LojaVirtual.Dominio.Entidades
     public class Pedido
     {
         [Required(ErrorMessage="Informe seu nome")]
-        public string NomePedido { get; set; }
+        public string NomeCliente { get; set; }
 
         [Display(Name= "Cep:")]
         public int Cep { get; set; }
