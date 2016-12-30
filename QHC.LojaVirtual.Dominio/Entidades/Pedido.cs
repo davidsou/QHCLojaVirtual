@@ -13,11 +13,11 @@ namespace QHC.LojaVirtual.Dominio.Entidades
         public string NomeCliente { get; set; }
 
         [Display(Name= "Cep:")]
-        public int Cep { get; set; }
+        public string Cep { get; set; }
 
         [Required(ErrorMessage="Informe seu Endereço")]
         [Display(Name= "Endereco:")]
-        public String Endereco { get; set; }
+        public string Endereco { get; set; }
 
         [Display(Name="Complemento:")]
         public string Complemento { get; set; }
