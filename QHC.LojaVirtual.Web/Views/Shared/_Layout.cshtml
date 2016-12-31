@@ -6,19 +6,21 @@
     <title>@ViewBag.Title - QHC Loja Virtual</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ErroEstilo.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="#">QHC Loja Virtual - Seu esporte é aqui</a>
-        @Html.Action("Resumo","Carrinho")
+        @Html.Action("Resumo", "Carrinho")
     </div>
     <div class="row panel">
-        <div id="categorias" class="col-xs-3">            
-            @Html.Action("Menu","Categoria")
+        <div id="categorias" class="col-xs-3">
+            @Html.Action("Menu", "Categoria")
         </div>
         <div id="categorias" class="col-xs-8">
-       @RenderBody()
+            @RenderBody()
         </div>
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
