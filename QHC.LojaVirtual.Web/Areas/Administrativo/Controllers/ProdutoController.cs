@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QHC.LojaVirtual.Dominio.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,13 @@ namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
     public class ProdutoController : Controller
     {
+        ProdutosRepositorio _repositorio;
         // GET: Administrativo/Produto
         public ActionResult Index()
         {
-            return View();
+            _repositorio = new ProdutosRepositorio();
+            var produtos = _repositorio.Produtos;
+            return View(produtos);
         }
     }
 }
