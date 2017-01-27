@@ -15,6 +15,25 @@ namespace QHC.LojaVirtual.Dominio.Repositorio
             get { return _context.Produtos; }
         }
 
+        public void Salvar(Produto produto)
+        { 
+            if ( produto.ProdutoId == 0)
+            {
+                _context.Produtos.Add(produto);
+            }
+            else
+            {
+                Produto p = _context.Produtos.Find(produto.ProdutoId);
+                if (p!=null)
+                {
+                    p.Nome = produto.Nome;
+                    p.Descricao = produto.Descricao;
+                    p.Categoria = produto.Categoria;
+                    p.Preco = produto.Preco;
+                }
+            }
+            _context.SaveChanges();
+        }
      
     }
   
