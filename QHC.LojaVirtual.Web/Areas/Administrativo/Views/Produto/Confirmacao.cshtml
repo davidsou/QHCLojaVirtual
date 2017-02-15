@@ -15,7 +15,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 <!--
     IMPORTANTE: VERIFICAR SE O BOOTSTRAP.JS ESTÁ REFERENCIADO NA LAYOUT E/OU NA PÁGINA
     SEM ESSA REFERENCIA, O MODAL NÃO FUNCIONA.
@@ -24,7 +23,7 @@
 
     $(function () {
         $(".btn-xs").click(function (e) {
-            e.preventDefault();            
+            e.preventDefault();
             var id = this.id;
             var nome = this.name;
             $("#deleteModal .modal-body input[type=hidden]").val(id);
@@ -33,10 +32,37 @@
         });
         $("#deleteModal .modal-footer button").click(function (e) {
             e.preventDefault();
-            var url= "Administrativo/Produto/Excluir"
+            var url = "produto/Excluir/"
             var id = $(".modal-body input[type=hidden]").val();
-            var rownum = "row" + id;
-            alert(rownum);
+            var rownum = '#row-' + id;
+
+            $.ajax({
+                url: url,
+                type: "post",
+                dataType: "json",
+                data: { produtoId: id },
+                beforeSend: function () {
+                    var loading = "<span><em>Excluindo</em>&nbsp;<i class ='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    $('#deleteModal  .modal-header h4').after(loading);
+
+                },
+                success: function () {
+                    $('#deleteModal').modal('hide');
+                    $(rownum).animate({ opacity: 0.0 }, 400, function () {
+                        $(rownum).remove();
+                    });
+                },
+                complete: function (data) {
+                    $('#divexcluir').empty();
+                    $('#divexcluir').addClass("alert alert-sucess");
+                    $('#divexcluir').html(data.responseText);
+                    //$("#mensagem").show();
+                    //$("#mensagem").html(data.responsiveText);
+                },
+
+
+            });
+
 
         });
     });
