@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
         ProdutosRepositorio _repositorio;
@@ -18,7 +19,7 @@ namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
             var produtos = _repositorio.Produtos;
             return View(produtos);
         }
-        public ViewResult Alterar ( int produtoId)
+        public ViewResult Alterar(int produtoId)
         {
             _repositorio = new ProdutosRepositorio();
             Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
@@ -27,7 +28,7 @@ namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
         [HttpPost]
         public ActionResult Alterar(Produto produto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
@@ -58,7 +59,7 @@ namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
         [HttpPost]
         public JsonResult Excluir(int produtoId)
         {
-        
+
             string mensagem = string.Empty;
             _repositorio = new ProdutosRepositorio();
             Produto prod = _repositorio.Excluir(produtoId);
@@ -67,9 +68,9 @@ namespace QHC.LojaVirtual.Web.Areas.Administrativo.Controllers
                 mensagem = string.Format("{0} excluído com sucesso", prod.Nome);
             }
 
-            return Json(mensagem,JsonRequestBehavior.AllowGet);
+            return Json(mensagem, JsonRequestBehavior.AllowGet);
         }
 
-        
+
     }
 }
