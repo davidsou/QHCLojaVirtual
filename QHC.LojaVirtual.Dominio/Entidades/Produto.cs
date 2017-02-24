@@ -26,5 +26,9 @@ namespace QHC.LojaVirtual.Dominio.Entidades
 
         [Required(ErrorMessage = "Digite a Categoria")]
         public string Categoria { get; set; }
+
+        public byte[] Image { get; set; }
+
+        public string ImageMimeType { get; set; }
     }
 }
