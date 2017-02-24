@@ -156,6 +156,7 @@
     <Content Include="Views\Carrinho\Resumo.cshtml" />
     <Content Include="Views\Carrinho\FecharPedido.cshtml" />
     <Content Include="Views\Carrinho\PedidoConcluido.cshtml" />
+    <Content Include="Views\Autenticacao\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,7 +167,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrativo\Models\" />
-    <Folder Include="Views\Autenticacao\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QHC.LojaVirtual.Dominio\QHC.LojaVirtual.Dominio.csproj">

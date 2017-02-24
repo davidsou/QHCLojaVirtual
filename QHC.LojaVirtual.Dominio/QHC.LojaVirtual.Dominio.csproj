@@ -82,6 +82,11 @@
     <Compile Include="Entidades\EmailProcessarPedido.cs" />
     <Compile Include="Entidades\Pedido.cs" />
     <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Migrations\201702241950529_initialcreate.cs" />
+    <Compile Include="Migrations\201702241950529_initialcreate.Designer.cs">
+      <DependentUpon>201702241950529_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AdministradoresRepositorio.cs" />
     <Compile Include="Repositorio\EfDbContext.cs" />
@@ -97,6 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702241950529_initialcreate.resx">
+      <DependentUpon>201702241950529_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,6 +18,7 @@ namespace QHC.LojaVirtual.Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(new Administrador());
         }
+        [HttpPost]
         public ActionResult Login(Administrador administrador, string returnUrl)
         {
             _repositorio = new AdministradoresRepositorio();
@@ -27,7 +28,7 @@ namespace QHC.LojaVirtual.Web.Controllers
                 Administrador admin = _repositorio.ObterAdministrador(administrador);
                 if (admin != null)
                 {
-                    if (!Equals(administrador.Login, admin.Senha))
+                    if (!Equals(administrador.Senha, admin.Senha))
                     {
                         ModelState.AddModelError("", "Senha não confere");
                         
@@ -46,12 +47,13 @@ namespace QHC.LojaVirtual.Web.Controllers
                             return Redirect(returnUrl);
                     }
                 }
+                else
                 {
                     ModelState.AddModelError("", "Administrador não localizado");
                 }
             }
 
-            //  
+            return View(new Administrador());
 
         }
     }
