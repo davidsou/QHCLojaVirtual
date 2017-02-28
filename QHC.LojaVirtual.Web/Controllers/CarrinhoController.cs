@@ -13,14 +13,32 @@ namespace QHC.LojaVirtual.Web.Controllers
     public class CarrinhoController : Controller
     {
         private ProdutosRepositorio _repositorio;
+
+        public ViewResult Index(Carrinho carrinho ,string returnUrl)
+        {
+            CarrinhoViewModel carrinhoview = new CarrinhoViewModel();
+
+            carrinhoview.Carrinho = carrinho;
+            carrinhoview.ReturnUrl = returnUrl;
+
+            return View(carrinhoview);
+
+        }
+
+        public PartialViewResult Resumo(Carrinho carrinho)
+        {
+            return PartialView(carrinho);
+        }
+
+
         // GET: Carrinho
-        public RedirectToRouteResult Adicionar(int produtoId, string returUrl)
+        public RedirectToRouteResult Adicionar(Carrinho carrinho ,int produtoId, string returUrl)
         {
             _repositorio = new ProdutosRepositorio();
             Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
            if(produto!=null)
            {
-               ObterCarrinho().AdicionarItem(produto, 1);
+               carrinho.AdicionarItem(produto, 1);
            }
 
            return RedirectToAction("Index", new { returUrl});
@@ -37,43 +55,29 @@ namespace QHC.LojaVirtual.Web.Controllers
             return carrinho;
         }
 
-        public RedirectToRouteResult Remover(int produtoId, string returnUrl)
+        public RedirectToRouteResult Remover(Carrinho carrinho,int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
             Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
 
             if (produto !=null)
             {
-                ObterCarrinho().RemoverItem(produto);
+                carrinho.RemoverItem(produto);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
     
-        public ViewResult Index (string returnUrl)
-        {
-            CarrinhoViewModel carrinhoview = new CarrinhoViewModel();
-            carrinhoview.Carrinho = ObterCarrinho();
-            carrinhoview.ReturnUrl = returnUrl;
-            return View(carrinhoview);
-        
-        }
-
-        public PartialViewResult Resumo()
-        {
-            Carrinho carrinho = ObterCarrinho();
-            return PartialView(carrinho);
-        }
-
+     
         public ViewResult FecharPedido()
         {
             return View(new Pedido());
         }
 
         [HttpPost]
-        public ViewResult FecharPedido(Pedido pedido)
+        public ViewResult FecharPedido(Carrinho carrinho,Pedido pedido)
         {
-            Carrinho carrinho = ObterCarrinho();
+            
             EmailConfiguracoes email = new EmailConfiguracoes();
             email.EscreveArquivo = bool.Parse(ConfigurationManager.AppSettings["Email.EscreverArquivo"] ?? "false");
 
