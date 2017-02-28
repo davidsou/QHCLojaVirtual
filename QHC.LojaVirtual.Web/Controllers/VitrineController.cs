@@ -31,11 +31,19 @@ namespace QHC.LojaVirtual.Web.Controllers
             model.CategoriaAtual = categoria;
             model.Paginacao.ItensTotal = categoria == null ? _repositorio.Produtos.Count() : _repositorio.Produtos.Count(e => e.Categoria.ToUpper().Trim() == categoria.ToUpper());
 
-           
-          
-
-
             return View(model);
+        }
+        public FileContentResult ObterImagem(int produtoId)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto prod = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            if (prod != null)
+            {
+                return File(prod.Imagem, prod.ImageMimeType);
+            }
+
+            return null;
         }
     }
 }
