@@ -30,6 +30,8 @@ namespace QHC.LojaVirtual.Dominio.Repositorio
                     p.Descricao = produto.Descricao;
                     p.Categoria = produto.Categoria;
                     p.Preco = produto.Preco;
+                    p.Imagem = produto.Imagem;
+                    p.ImageMimeType = produto.ImageMimeType;
                 }
             }
             _context.SaveChanges();

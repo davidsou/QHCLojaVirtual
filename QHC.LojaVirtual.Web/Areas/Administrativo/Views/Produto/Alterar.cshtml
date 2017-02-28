@@ -22,7 +22,7 @@
                 {
                     case "ProdutoId":
                         break;
-                    case "Image":
+                    case "Imagem":
                         break;
                     case "ImageMimeType":
                         break;
@@ -36,7 +36,7 @@
 
                             @if (property.PropertyName == "Descricao")
                             {
-                                @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 5 });
+                                @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 5 })
                             }
                             else
                             {
@@ -49,26 +49,26 @@
                 }
 
             }
-            @* Upload *@
+            @*Upload*@
             <div class="form-group">
                 <div style="position:relative;">
-                    <label>Image</label>
-                    <a href="javastript:;" class="btn">
-                        Selecione uma imagem...
-                        <input type="file" name="Image" size="40" style="position: absolute; z-index: 2; top: 0; left: 0; filter:alpha(opacity=0); opacity:0;background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());' />
+                    <label>Imagem</label>
+                    <a class='btn' href='javascript:;'>
+                        Selecione a imagem...
+                        <input type="file" name="Image" size="40" style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());'>
                     </a>
-                    <span id="upload-file-info" class="label label-info"></span>
+                    <span class='label label-info' id="upload-file-info"></span>
                 </div>
-                @if (Model.Image == null)
+                @if (Model.Imagem == null)
                 {
-                    <div class="form-control-static">Nenhuma imagem selecionada.</div>
+
+                    <div class="form-control-static">Nenhuma imagem</div>
                 }
                 else
                 {
-                    <img class ="img-thumbnail" width="120" height="120"src="@Url.Action("ObterImagem","Produto",new{Model.ProdutoId})" />
+                    <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Produto", new { Model.ProdutoId })" />
                 }
             </div>
-
         </div>
         <div class="panel-footer">
             <input type="submit" value="Salvar" class="btn btn-primary" />
