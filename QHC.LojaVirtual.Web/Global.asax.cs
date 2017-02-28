@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QHC.LojaVirtual.Dominio.Entidades;
+using QHC.LojaVirtual.Web.InfraEstrutura;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,7 @@ namespace QHC.LojaVirtual.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Carrinho), new CarrinhoModelBinder());
         }
     }
 }
