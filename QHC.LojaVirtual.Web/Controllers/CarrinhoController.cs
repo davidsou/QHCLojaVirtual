@@ -32,7 +32,7 @@ namespace QHC.LojaVirtual.Web.Controllers
 
 
         // GET: Carrinho
-        public RedirectToRouteResult Adicionar(Carrinho carrinho ,int produtoId, string returUrl)
+        public RedirectToRouteResult Adicionar(Carrinho carrinho ,int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
             Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
@@ -41,7 +41,7 @@ namespace QHC.LojaVirtual.Web.Controllers
                carrinho.AdicionarItem(produto, 1);
            }
 
-           return RedirectToAction("Index", new { returUrl});
+           return RedirectToAction("Index", new { returnUrl});
         }
 
         private Carrinho ObterCarrinho()
