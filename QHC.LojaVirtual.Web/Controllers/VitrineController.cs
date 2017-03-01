@@ -33,6 +33,7 @@ namespace QHC.LojaVirtual.Web.Controllers
 
             return View(model);
         }
+        [Route("Vitrine/ObterImagem/{produtoid}")]
         public FileContentResult ObterImagem(int produtoId)
         {
             _repositorio = new ProdutosRepositorio();
