@@ -23,7 +23,7 @@ namespace QHC.LojaVirtual.Dominio.Entidades
            }
            else
            {
-               item.Quantidade += quantidade;
+               item.Quantidade = quantidade;
            }
        }
        //Remover
