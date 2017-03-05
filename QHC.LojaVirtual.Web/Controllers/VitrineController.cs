@@ -72,5 +72,13 @@ namespace QHC.LojaVirtual.Web.Controllers
 
             return null;
         }
+
+        [Route("DetalhesProdutos/{id}/{produto}")]
+        public ViewResult Detalhes (int id)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto produto = _repositorio.ObterProduto(id);
+            return View(produto);
+        }
     }
 }
