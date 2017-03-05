@@ -19,3 +19,7 @@ textarea {
 .quantidade-textbox{
     width:10px;
 }
+a.deco-nome{
+    color:black;
+    text-decoration:none;
+}
