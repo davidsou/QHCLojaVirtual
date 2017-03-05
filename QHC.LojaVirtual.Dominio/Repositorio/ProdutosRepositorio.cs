@@ -40,7 +40,7 @@ namespace QHC.LojaVirtual.Dominio.Repositorio
         public Produto Excluir (int produtoId)
         {
             Produto prod = _context.Produtos.Find(produtoId);
-            if (produtoId !=null)
+            if (prod != null)
             {
                 _context.Produtos.Remove(prod);
                 _context.SaveChanges();
